@@ -1,0 +1,13 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+<h2>{{blog.title}} ga tegishli blogni o'chirish</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <h4>haqiqatdan ham bu blogni o'chirishni istaysizmi</h4>
+    <button class="btn btn-danger" type="submit">Delete</button>
+    <a href="{% url 'more_news' blog.slug %}" class="btn btn-success">Ortga qaytish</a>
+</form>
+
+{% endblock %}

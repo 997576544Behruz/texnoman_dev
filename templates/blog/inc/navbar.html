@@ -1,0 +1,87 @@
+{% load static %}
+<header class="header-area bg-white border-bottom border-bottom-gray">
+  <div class="container">
+      <div class="row align-items-center ">
+          <div class="col-lg-2">
+              <div class="logo-box">
+                  <a href="index-2.html" class="logo">
+<img src="{% static 'images/logo-black.png' %}" alt="logo">
+                  </a>
+                  <div class="user-action">
+                      <div class="off-canvas-menu-toggle icon-element icon-element-xs shadow-sm" data-toggle="tooltip" data-placement="top" title="Main menu">
+                          <i class="fa-solid fa-bars"></i>
+                      </div>
+                  </div>
+              </div>
+          </div><!-- end col-lg-2 -->
+          <div class="col-lg-10 d-flex justify-content-end">
+              <div class="menu-wrapper">
+                  <nav class="menu-bar ml-auto pr-2">
+                      <ul>
+                          <li>
+                              <a href="{% url 'home' %}">Bloglar</a>
+                          </li>
+                          <li class="is-mega-menu">
+                              <a href="{% url 'username' %}">Foydalanuvchilar</a>
+                          </li>
+                          <li>
+                              <a href="#">Loyihalar</a>
+                          </li>
+                          <li>
+                            <a href="{% url 'add_blog' %}">Maqola yozish</a>
+                        </li>
+                      </ul><!-- end ul -->
+                  </nav><!-- end main-menu -->
+
+                  <div class="nav-right-button">
+                    {% if user.is_authenticated %}
+<a href="" class="btn theme-btn theme-btn-outline mr-2"></i>{{user.username}}</a>
+<a href="{% url 'log_out' %}" class="btn theme-btn"></i>LogOut</a>
+                    {% else %}
+<a href="{% url 'login_page' %}" class="btn theme-btn theme-btn-outline mr-2"><i class="fa-solid fa-arrow-right-to-bracket fs-11 "></i> Login</a>
+<a href="{% url 'register' %}" class="btn theme-btn"><i class="fa-solid fa-user fs-11"></i> Sign up</a>
+                    {% endif %}
+                </div>
+                  <!-- end nav-right-button -->
+              </div><!-- end menu-wrapper -->
+          </div><!-- end col-lg-10 -->
+      </div><!-- end row -->
+  </div><!-- end container -->
+  <div class="off-canvas-menu custom-scrollbar-styled">
+      <div class="off-canvas-menu-close icon-element icon-element-sm shadow-sm" data-toggle="tooltip" data-placement="left" title="Close menu">
+          <i class="la la-times"></i>
+      </div><!-- end off-canvas-menu-close -->
+      <ul class="generic-list-item off-canvas-menu-list pt-90px">
+        <li>
+            <a href="{% url 'home' %}">Bloglar</a>
+        </li>
+        <li class="is-mega-menu">
+            <a href="{% url 'username' %}">Foydalanuvchilar</a>
+        </li>
+        <li>
+            <a href="#">Loyihalar</a>
+        </li>
+        <li>
+          <a href="{% url 'add_blog' %}">Maqola yozish</a>
+      </li>
+      </ul>
+      <div class="off-canvas-btn-box px-4 pt-5 text-center">
+        {% if user.is_authenticated %}
+          <a href="" class="btn theme-btn theme-btn-sm theme-btn-outline">
+             {{user.username}}
+          </a>
+          <span class="fs-15 fw-medium d-inline-block mx-2">Or</span>
+          <a href="signup-2.html" class="btn theme-btn theme-btn-sm"></i>LogOut</a>
+          {% else %}
+          <a href="{% url 'login_page' %}" class="btn theme-btn theme-btn-sm theme-btn-outline">
+            <i class="fa-solid fa-arrow-right-to-arc"></i> Login
+          </a>
+          <span class="fs-15 fw-medium d-inline-block mx-2">Or</span>
+          <a href="{% url 'register' %}" class="btn theme-btn theme-btn-sm"><i class="la la-plus mr-1"></i> Sign up</a>
+        </div>
+        {% endif %}
+  </div><!-- end off-canvas-menu -->
+  <div class="body-overlay"></div>
+</header>
+
+

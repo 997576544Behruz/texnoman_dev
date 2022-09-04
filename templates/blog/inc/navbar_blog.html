@@ -1,0 +1,35 @@
+<!-- {% if blog %} -->
+<section class="hero-area pattern-bg-2 bg-white shadow-sm overflow-hidden pt-50px pb-50px">
+<span class="stroke-shape stroke-shape-1"></span>
+<span class="stroke-shape stroke-shape-2"></span>
+<span class="stroke-shape stroke-shape-3"></span>
+<span class="stroke-shape stroke-shape-4"></span>
+<span class="stroke-shape stroke-shape-5"></span>
+<span class="stroke-shape stroke-shape-6"></span>
+<div class="container">
+<div class="hero-content">
+    <ul class="breadcrumb-list pb-2">
+        <li><a href="#">Home</a><span><svg xmlns="http://www.w3.org/2000/svg" height="19px" viewBox="0 0 24 24" width="19px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg></span></li>
+        <li><a href="#">{{blog.category}}</a><span><svg xmlns="http://www.w3.org/2000/svg" height="19px" viewBox="0 0 24 24" width="19px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg></span></li>
+        <li>{{blog.title}}</li>
+    </ul>
+    <h2 class="section-title">{{blog.title}}</h2>
+    <div class="media media-card align-items-center shadow-none p-0 mb-0 rounded-0 mt-4 bg-transparent">
+        <a href="#" class="media-img media-img--sm d-block mr-2 rounded-full">
+            <img src="{{blog.user.img.url}}" data-src="images/img1.jpg" alt="avatar" class="rounded-full lazy">
+        </a>
+        <div class="media-body">
+            <h5 class="fs-14 fw-medium">By <a href="#">{{blog.user.username}}</a></h5>
+            <small class="meta d-block lh-20">
+                <span class="mr-2">
+                    {{blog.created_at|date:"M d, Y"}}
+                </span>
+                <span class="mr-2 fs-15">.</span>
+                <a href="#comments" class="page-scroll text-gray"><i class="fa-solid fa-comment mr-1"></i>{{cate.blog_set.all}}</a>
+            </small>
+        </div>
+    </div>
+</div><!-- end hero-content -->
+</div><!-- end container -->
+</section>
+<!-- {% endif %} -->

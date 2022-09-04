@@ -1,0 +1,31 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<form method="get"class="input-group mb-3" >
+    <input type="text" name="search" class="form-control" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1">
+    <button class="btn btn-primary" type="submit">qidirish</button>
+</form>
+<hr>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Foydalanuvchilar</th>
+        <th scope="col">So'ngi tashrif</th>
+        <th scope="col">A'zo bo'lgan</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{user.username}}</td>
+        <td>{{user.last_login}}</td>
+        <td>{{user.date_joined}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+    
+{% endblock %}

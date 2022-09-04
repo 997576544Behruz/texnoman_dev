@@ -1,0 +1,92 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+<section class="blog-area">
+  <div class="container">
+        <div class="row">
+ {% if blogsearch %}
+    {% for blog in blogsearch %}
+     <div class="col-lg-6 responsive-column-half">
+  <div class="card card-item hover-y ">
+    <a href="{% url 'more_news' blog.slug %}" class="card-img">
+      <img class="lazy " style="height: 250px; " src="{{blog.img.url}}" data-src="images/img6.jpg" alt="Card image">
+    </a>
+    <div class="card-body pt-0 "  style="min-height: 220px;">
+      <a href="{% url 'more_news' blog.slug %}" class="card-link">{{blog.categorys}}</a>
+      <h5 class="card-title fw-medium"><a href="{% url 'more_news' blog.slug %}">{{blog.title}}</a></h5>
+      <div class="media media-card align-items-center shadow-none p-0 mb-0 rounded-0 mt-4 bg-transparent">
+        <a href="#" class="media-img media-img--sm d-block mr-2 rounded-full">
+          <img src="{{blog.img.url}}" alt="avatar" class="rounded-full">
+        </a>
+        <div class="media-body">
+          <h5 class="fs-14 fw-medium">By <a href="#">{{blog.user.username}}</a></h5>
+          <small class="meta d-block lh-20">
+            <span>{{blog.created_at|date:"M d, Y"}}</span>
+          </small>
+        </div>
+      </div>
+    </div><!-- end card-body -->
+  </div><!-- end card -->
+     </div><!-- end col-lg-6 -->
+      {% endfor %}
+      {% else %}
+      {% for blog in blogs %}
+      <div class="col-lg-6 responsive-column-half">
+   <div class="card card-item hover-y ">
+     <a href="{% url 'more_news' blog.slug %}" class="card-img">
+       <img class="lazy " style="height: 250px; " src="{{blog.img.url}}" data-src="images/img6.jpg" alt="Card image">
+     </a>
+     <div class="card-body pt-0 "  style="min-height: 220px;">
+       <a href="{% url 'more_news' blog.slug %}" class="card-link">{{blog.categorys}}</a>
+       <h5 class="card-title fw-medium"><a href="{% url 'more_news' blog.slug %}">{{blog.title}}</a></h5>
+       <div class="media media-card align-items-center shadow-none p-0 mb-0 rounded-0 mt-4 bg-transparent">
+         <a href="#" class="media-img media-img--sm d-block mr-2 rounded-full">
+           <img src="{{blog.user.img.url}}" alt="avatar" class="rounded-full">
+         </a>
+         <div class="media-body">
+           <h5 class="fs-14 fw-medium">By <a href="#">{{blog.user.username}}</a></h5>
+           <small class="meta d-block lh-20">
+            <span>{{blog.created_at|date:"M d, Y"}}</span>
+           </small>
+         </div>
+       </div>
+     </div><!-- end card-body -->
+   </div><!-- end card -->
+      </div><!-- end col-lg-6 -->
+       {% endfor %}
+      {% endif %}
+        </div><!-- end row -->
+        <div class="pager text-center pt-30px">
+          <nav aria-label="Page navigation example">
+            <ul class="pagination generic-pagination justify-content-center">
+              {% if blogs.has_previous %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{blogs.previous_page_number}}" aria-label="Previous">
+                  <span aria-hidden="true"><i class="fa-solid fa-arrow-left"></i></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+            {% endif %}
+            {% for p in blogs.paginator.page_range %}
+            <li class="page-item {% if p == blogs.number%}active{% endif %}"><a class="page-link" href="?page={{p}}">{{p}}</a></li>
+          {% endfor %}
+              {% if blogs.has_next %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{blogs.next_page_number}}" aria-label="Next">
+                  <span aria-hidden="true">
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            {% endif %}
+            </ul>
+          </nav>
+
+<p class="fs-13 pt-3">Showing {{blogs.number}}-{{blogs.paginator.num_pages}} results of {{blogs.paginator.num_pages}} articles</p>
+        </div>
+  </div><!-- end container -->
+</section>
+
+
+{% endblock %}

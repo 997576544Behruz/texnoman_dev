@@ -1,0 +1,31 @@
+{% extends "blog/base.html" %}
+{% load widget_tweaks %}
+{% block content %}
+<h2>{{blog.title}} ga tegishli blogni tahrirlash</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Title</label>
+      {% render_field form.title type="text"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" %}
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Img</label>
+        {% render_field form.img class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" %}
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">category</label>
+        {% render_field form.category type="text"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" %}
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">content</label>
+        {% render_field form.content type="text"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" %}
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">tags</label>
+        {% render_field form.tags type="text"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" %}
+      </div>
+      
+<button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock %}
